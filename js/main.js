@@ -81,7 +81,7 @@ function setup() {
 
   getModuleByID(id);
 
-  MODULE_RADIUS = canvasDiv.offsetWidth / 2.1;
+  MODULE_RADIUS = canvasDiv.offsetWidth * MODULE_RATIO_TO_CANVAS;
 }
 
 //--------------------------------------------------//
