@@ -95,9 +95,9 @@ class ModuleCanvas {
     /*
     let timestamp = thisModule.timestamp;
     let formattedTimestamp =
-      this.formattedDate(timestamp, "date", "/") +
+      formattedDate(timestamp, "date", "/") +
       "\n" +
-      this.formattedDate(timestamp, "time", ":") +
+      formattedDate(timestamp, "time", ":") +
       " GMT+7";
     this.frame.textFont(font, TEXT_SIZE);
     this.frame.textAlign(RIGHT, BOTTOM);
@@ -130,7 +130,7 @@ class ModuleCanvas {
         "Outlook " +
         thisModule.id.toUpperCase() +
         " at " +
-        this.formattedDate(Date.now(), "time", ".") +
+        formattedDate(Date.now(), "time", ".") +
         ".jpg"
     );
   }
@@ -282,21 +282,6 @@ class ModuleCanvas {
 
     this.frame.pop();
   }
-
-  //--------------------------------------------------//
-
-  formattedDate(date, format, separator) {
-    // Day
-
-    switch (format) {
-      case "date":
-        return dd(date) + separator + mm(date) + separator + yy(date);
-        break;
-      case "time":
-        return h(date) + separator + m(date) + separator + s(date);
-        break;
-    }
-  }
 }
 
 //--------------------------------------------------//
@@ -406,3 +391,18 @@ const s = (date) => {
 
   return a < 10 ? `0${a}` : a;
 };
+
+//--------------------------------------------------//
+
+function formattedDate(date, format, separator) {
+  // Day
+
+  switch (format) {
+    case "date":
+      return dd(date) + separator + mm(date) + separator + yy(date);
+      break;
+    case "time":
+      return h(date) + separator + m(date) + separator + s(date);
+      break;
+  }
+}
