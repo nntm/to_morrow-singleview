@@ -72,9 +72,6 @@ class ModuleCanvas {
     this.frame = createGraphics(FRAME_WIDTH, FRAME_HEIGHT);
     this.frame.background(BLACK);
 
-    // Display: module screenshot
-    this.drawModuleToFrame(MODULE_RATIO_TO_FRAME, FRAME_WIDTH, FRAME_HEIGHT);
-
     // Display: Logo
     let logo = loadImage("assets/logo.png");
     this.frame.imageMode(CORNER);
@@ -104,6 +101,18 @@ class ModuleCanvas {
       FRAME_WIDTH - FRAME_MARGIN,
       FRAME_HEADING_MARIN
     );
+
+    // Display: Prompt
+    let logo = loadImage("assets/prompt.png");
+    this.frame.imageMode(CENTER);
+    this.frame.image(
+      logo,
+      FRAME_WIDTH / 2,
+      FRAME_HEIGHT - FRAME_MARGIN - logo.height
+    );
+
+    // Display: module screenshot
+    //this.drawModuleToFrame(MODULE_RATIO_TO_FRAME, FRAME_WIDTH, FRAME_HEIGHT);
 
     // Export
     save(
@@ -303,10 +312,10 @@ function draw() {
   if (thisModule != null) {
     push();
     translate(width / 2, height / 2);
-    rotate(frameCount * thisModule.rotationSpeed);
+    //rotate(frameCount * thisModule.rotationSpeed);
 
-    thisModule.run();
-    thisModule.display();
+    //thisModule.run();
+    //thisModule.display();
 
     pop();
   }
