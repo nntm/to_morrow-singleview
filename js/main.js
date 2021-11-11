@@ -95,9 +95,9 @@ class ModuleCanvas {
     /*
     let timestamp = thisModule.timestamp;
     let formattedTimestamp =
-      moment(timestamp * 1000).format("DD/MM/YYYY") +
+      this.formattedDate(timestamp, "date", "/") +
       "\n" +
-      moment(timestamp * 1000).format("HH:mm:ss") +
+      this.formattedDate(timestamp, "time", ":") +
       " GMT+7";
     this.frame.textFont(font, TEXT_SIZE);
     this.frame.textAlign(RIGHT, BOTTOM);
