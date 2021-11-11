@@ -1,10 +1,12 @@
 class Module {
-  constructor(index, id, isNew, pos, vis) {
+  constructor(index, id, isNew, pos, ins, wea, vis) {
     this.index = index;
     this.id = id;
     this.isNew = isNew;
 
     this.pos = pos;
+
+    this.timestamp = ins.taken_at;
 
     // Module
     this.vertexCount = vis.module.vertex_count;
@@ -252,36 +254,6 @@ class Module {
     for (let d of this.droplets) {
       d.display();
     }
-  }
-
-  //--------------------------------------------------//
-
-  drawIndex() {
-    noStroke();
-    fill(this.colors[this.colors.length - 1]);
-
-    textSize(30);
-    textAlign(CENTER, CENTER);
-
-    text(this.index, 0, 0);
-  }
-
-  drawEnclosingShape() {
-    noFill();
-    stroke(this.colors[this.colors.length - 1]);
-    strokeWeight(1);
-
-    beginShape();
-    for (
-      let a = HALF_PI;
-      a < TWO_PI + HALF_PI;
-      a += TWO_PI / MODULE_VERTEX_COUNT
-    ) {
-      let sx = cos(a) * MODULE_RADIUS;
-      let sy = sin(a) * MODULE_RADIUS;
-      vertex(sx, sy);
-    }
-    endShape(CLOSE);
   }
 
   //--------------------------------------------------//
