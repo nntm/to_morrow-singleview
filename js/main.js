@@ -130,7 +130,7 @@ class ModuleCanvas {
         "Outlook " +
         thisModule.id.toUpperCase() +
         " at " +
-        moment().format("hh.mm.ss A") +
+        this.formattedDate(Date.now(), "time", ".") +
         ".jpg"
     );
   }
@@ -282,6 +282,21 @@ class ModuleCanvas {
 
     this.frame.pop();
   }
+
+  //--------------------------------------------------//
+
+  formattedDate(date, format, separator) {
+    // Day
+
+    switch (format) {
+      case "date":
+        return dd(date) + separator + mm(date) + separator + yy(date);
+        break;
+      case "time":
+        return h(date) + separator + m(date) + separator + s(date);
+        break;
+    }
+  }
 }
 
 //--------------------------------------------------//
@@ -340,3 +355,54 @@ function keyPressed() {
     loop();
   }
 }
+
+//--------------------------------------------------//
+//--------------------------------------------------//
+//--------------------------------------------------//
+
+const dd = (date) => {
+  let a;
+  a = JSON.stringify(new Date(date).getDate());
+
+  return a < 10 ? `0${a}` : a;
+};
+
+// Month
+const mm = (date) => {
+  let a;
+  a = JSON.stringify(new Date(date).getMonth() + 1);
+
+  return a < 10 ? `0${a}` : a;
+};
+
+// Year
+const yy = (date) => {
+  let a;
+  a = JSON.stringify(new Date(date).getFullYear()).substring(2, 4);
+
+  return a < 10 ? `0${a}` : a;
+};
+
+// Hour
+const h = (date) => {
+  let a;
+  a = JSON.stringify(new Date(date).getHours());
+
+  return a < 10 ? `0${a}` : a;
+};
+
+// Minute
+const m = (date) => {
+  let a;
+  a = JSON.stringify(new Date(date).getMinutes());
+
+  return a < 10 ? `0${a}` : a;
+};
+
+// Second
+const s = (date) => {
+  let a;
+  a = JSON.stringify(new Date(date).getSeconds());
+
+  return a < 10 ? `0${a}` : a;
+};
