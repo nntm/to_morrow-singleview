@@ -59,61 +59,65 @@ class ModuleCanvas {
   //--------------------------------------------------//
 
   exportFrame() {
-    let DIR = "http://127.0.0.1:5500/assets/";
+    //let DIR = "/assets/";
+    //let logo = loadImage(DIR + "logo.png");
+    //let font = loadFont(DIR + "Recursive_Monospace-Regular.ttf");
+    //let prompt = loadImage(DIR + "prompt.png");
+
     let FRAME_WIDTH = 1200;
-    let FRAME_HEIGHT = 1500;
+    //let FRAME_HEIGHT = 1500;
+    let FRAME_HEIGHT = FRAME_WIDTH;
     let FRAME_MARGIN = 50;
-    let FRAME_HEADING_MARIN = 140;
+    let FRAME_HEADING_MARGIN = 140;
     let MODULE_RATIO_TO_FRAME = 3;
-    let LOGO_WIDTH = 300;
     let TEXT_SIZE = 32;
-    let RECURSIVE = loadFont(DIR + "Recursive_Monospace-Regular.ttf");
-    console.log(RECURSIVE);
 
     // Initialize frame
     this.frame = createGraphics(FRAME_WIDTH, FRAME_HEIGHT);
     this.frame.background(BLACK);
 
     // Display: Logo
-    let logo = loadImage(DIR + "logo.png");
-    console.log(logo);
+    /*
     this.frame.imageMode(CORNER);
     this.frame.image(logo, FRAME_MARGIN, FRAME_MARGIN);
+    */
 
     // Display: ID
+    /*
     let outlook = "Outlook " + thisModule.id.toUpperCase();
-    this.frame.textFont(RECURSIVE);
-    this.frame.textSize(TEXT_SIZE);
+    this.frame.textFont(font, TEXT_SIZE);
     this.frame.textAlign(LEFT, BOTTOM);
     this.frame.fill(WHITE);
-    this.frame.text(outlook, FRAME_MARGIN, FRAME_HEADING_MARIN);
+    this.frame.text(outlook, FRAME_MARGIN, FRAME_HEADING_MARGIN);
+    */
 
     // Display: Timestamp
+    /*
     let timestamp = thisModule.timestamp;
     let formattedTimestamp =
       moment(timestamp * 1000).format("DD/MM/YYYY") +
       "\n" +
       moment(timestamp * 1000).format("HH:mm:ss") +
       " GMT+7";
-    this.frame.textFont(RECURSIVE);
-    this.frame.textSize(TEXT_SIZE);
+    this.frame.textFont(font, TEXT_SIZE);
     this.frame.textAlign(RIGHT, BOTTOM);
     this.frame.fill(WHITE);
     this.frame.text(
       formattedTimestamp,
       FRAME_WIDTH - FRAME_MARGIN,
-      FRAME_HEADING_MARIN
+      FRAME_HEADING_MARGIN
     );
+    */
 
     // Display: Prompt
-    let prompt = loadImage(DIR + "prompt.png");
-    console.log(prompt);
+    /*
     this.frame.imageMode(CENTER);
     this.frame.image(
       prompt,
       FRAME_WIDTH / 2,
       FRAME_HEIGHT - FRAME_MARGIN - logo.height
     );
+    */
 
     // Display: module screenshot
     this.drawModuleToFrame(MODULE_RATIO_TO_FRAME, FRAME_WIDTH, FRAME_HEIGHT);
