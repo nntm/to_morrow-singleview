@@ -103,10 +103,10 @@ class ModuleCanvas {
     );
 
     // Display: Prompt
-    let logo = loadImage("assets/prompt.png");
+    let prompt = loadImage("assets/prompt.png");
     this.frame.imageMode(CENTER);
     this.frame.image(
-      logo,
+      prompt,
       FRAME_WIDTH / 2,
       FRAME_HEIGHT - FRAME_MARGIN - logo.height
     );
