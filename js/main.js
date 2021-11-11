@@ -59,6 +59,7 @@ class ModuleCanvas {
   //--------------------------------------------------//
 
   exportFrame() {
+    let DIR = "http://127.0.0.1:5500/assets/";
     let FRAME_WIDTH = 1200;
     let FRAME_HEIGHT = 1500;
     let FRAME_MARGIN = 50;
@@ -66,14 +67,16 @@ class ModuleCanvas {
     let MODULE_RATIO_TO_FRAME = 3;
     let LOGO_WIDTH = 300;
     let TEXT_SIZE = 32;
-    let RECURSIVE = loadFont("assets/Recursive_Monospace-Regular.ttf");
+    let RECURSIVE = loadFont(DIR + "Recursive_Monospace-Regular.ttf");
+    console.log(RECURSIVE);
 
     // Initialize frame
     this.frame = createGraphics(FRAME_WIDTH, FRAME_HEIGHT);
     this.frame.background(BLACK);
 
     // Display: Logo
-    let logo = loadImage("assets/logo.png");
+    let logo = loadImage(DIR + "logo.png");
+    console.log(logo);
     this.frame.imageMode(CORNER);
     this.frame.image(logo, FRAME_MARGIN, FRAME_MARGIN);
 
@@ -103,7 +106,8 @@ class ModuleCanvas {
     );
 
     // Display: Prompt
-    let prompt = loadImage("assets/prompt.png");
+    let prompt = loadImage(DIR + "prompt.png");
+    console.log(prompt);
     this.frame.imageMode(CENTER);
     this.frame.image(
       prompt,
@@ -112,7 +116,7 @@ class ModuleCanvas {
     );
 
     // Display: module screenshot
-    //this.drawModuleToFrame(MODULE_RATIO_TO_FRAME, FRAME_WIDTH, FRAME_HEIGHT);
+    this.drawModuleToFrame(MODULE_RATIO_TO_FRAME, FRAME_WIDTH, FRAME_HEIGHT);
 
     // Export
     save(
@@ -312,10 +316,10 @@ function draw() {
   if (thisModule != null) {
     push();
     translate(width / 2, height / 2);
-    //rotate(frameCount * thisModule.rotationSpeed);
+    rotate(frameCount * thisModule.rotationSpeed);
 
-    //thisModule.run();
-    //thisModule.display();
+    thisModule.run();
+    thisModule.display();
 
     pop();
   }
