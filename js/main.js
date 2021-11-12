@@ -160,7 +160,7 @@ class ModuleCanvas {
 
         this.frame.push();
         this.frame.translate((p.x - MODULE_RADIUS / 2.0) * ratio, 0);
-        this.frame.rotate(-frameCount * this.rotation);
+        this.frame.rotate(-frameCount * p.rotation);
 
         switch (p.shapeType) {
           case "SEMIELLIPSE":
