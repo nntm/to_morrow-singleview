@@ -1,5 +1,7 @@
 class Module {
     constructor(index, id, isNew, pos, ins, wea, vis) {
+        this.isPaused = false;
+
         this.index = index;
         this.id = id;
         this.isNew = isNew;
@@ -94,6 +96,12 @@ class Module {
         }
 
         return arr;
+    }
+
+    //--------------------------------------------------//
+
+    pause() {
+        this.isPaused = !this.isPaused;
     }
 
     //--------------------------------------------------//

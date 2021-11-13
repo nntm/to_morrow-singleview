@@ -113,7 +113,7 @@ class Petal {
 
         push();
         translate(this.x - MODULE_RADIUS / 2.0, 0);
-        rotate(-frameCount * this.rotation);
+        rotate(-FRAME_COUNT * this.rotation);
 
         switch (this.shapeType) {
             case "SEMIELLIPSE":

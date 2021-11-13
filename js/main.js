@@ -183,7 +183,7 @@ class ModuleCanvas {
 
         this.frame.push();
         this.frame.translate(frameWidth / 2, frameHeight / 2);
-        this.frame.rotate(frameCount * thisModule.rotationSpeed);
+        this.frame.rotate(FRAME_COUNT * thisModule.rotationSpeed);
 
         // Petals
         for (let p of thisModule.petals) {
@@ -205,7 +205,7 @@ class ModuleCanvas {
 
                 this.frame.push();
                 this.frame.translate((p.x - MODULE_RADIUS / 2.0) * ratio, 0);
-                this.frame.rotate(-frameCount * p.rotation);
+                this.frame.rotate(-FRAME_COUNT * p.rotation);
 
                 switch (p.shapeType) {
                     case "SEMIELLIPSE":
@@ -369,6 +369,8 @@ function setup() {
     frameRate(FPS_DEFAULT);
     FPS_RELATIVE_SPEED = 1;
 
+    FRAME_COUNT = 0;
+
     rectMode(CENTER);
     ellipseMode(CENTER);
 
@@ -391,9 +393,13 @@ function draw() {
     if (thisModule != null) {
         push();
         translate(width / 2, height / 2);
-        rotate(frameCount * thisModule.rotationSpeed);
+        rotate(FRAME_COUNT * thisModule.rotationSpeed);
 
-        thisModule.run();
+        if (!thisModule.isPaused) {
+            thisModule.run();
+            FRAME_COUNT++;
+        }
+
         thisModule.display();
 
         pop();
@@ -410,6 +416,10 @@ function keyPressed() {
         canvas.exportFrame();
         loop();
     }
+}
+
+function mouseClicked() {
+    thisModule.pause();
 }
 
 //--------------------------------------------------//
