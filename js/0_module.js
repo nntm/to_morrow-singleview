@@ -100,8 +100,14 @@ class Module {
 
     //--------------------------------------------------//
 
-    pause() {
-        this.isPaused = !this.isPaused;
+    pauseModule() {
+        this.isPaused = true;
+    }
+
+    //--------------------------------------------------//
+
+    pauseModule() {
+        this.isPaused = false;
     }
 
     //--------------------------------------------------//

@@ -388,17 +388,16 @@ function setup() {
 function draw() {
     background(BLACK);
 
-    FPS_RELATIVE_SPEED = (FPS_DEFAULT * 1.0) / frameRate();
+    FPS_RELATIVE_SPEED =
+        frameRate() >= 5 ? (FPS_DEFAULT * 1.0) / frameRate() : 1;
 
     if (thisModule != null) {
         push();
         translate(width / 2, height / 2);
         rotate(FRAME_COUNT * thisModule.rotationSpeed);
 
-        if (!thisModule.isPaused) {
-            thisModule.run();
-            FRAME_COUNT++;
-        }
+        thisModule.run();
+        FRAME_COUNT++;
 
         thisModule.display();
 
@@ -416,10 +415,6 @@ function keyPressed() {
         canvas.exportFrame();
         loop();
     }
-}
-
-function mouseClicked() {
-    thisModule.pause();
 }
 
 //--------------------------------------------------//
